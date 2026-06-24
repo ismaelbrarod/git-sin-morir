@@ -13,18 +13,19 @@ source("code/00_settings.R")
 # 1. Cargar CSV
 # ------------------------------------------------------------------------------
 
-serie_csv <- read_csv("data/raw/serie_semanal.csv")
+serie_csv <- read_csv("data/01_raw/serie_semanal.csv")
 
 # ------------------------------------------------------------------------------
 # 2. Cargar RData
 # ------------------------------------------------------------------------------
 
-load("data/raw/serie_semanal.RData")
+load("data/01_raw/serie_semanal.RData")
 
 # ------------------------------------------------------------------------------
 # 3. Generar una base por cada tipo de conteo y guardarlas como CSV
 # ------------------------------------------------------------------------------
-dir.create("data/processed", showWarnings = FALSE, recursive = TRUE)
+
+dir.create("data/02_processed", showWarnings = FALSE, recursive = TRUE)
 
 tipos_conteo <- c(
   "casos_total",
@@ -41,16 +42,17 @@ for (tipo in tipos_conteo) {
   
   write_csv(
     base_tipo,
-    file.path("data/processed", paste0(tipo, ".csv"))
+    file.path("data/02_processed", paste0(tipo, ".csv"))
   )
 }
 
 # ------------------------------------------------------------------------------
 # 4. Guardar serie completa como serie_final.csv en data/output
 # ------------------------------------------------------------------------------
-dir.create("data/output", showWarnings = FALSE, recursive = TRUE)
+
+dir.create("data/03_output", showWarnings = FALSE, recursive = TRUE)
 
 write_csv(
   serie,
-  file.path("data/output", "serie_final.csv")
+  file.path("data/03_output", "serie_final.csv")
 )
