@@ -63,7 +63,7 @@ print(p_all)
 # ------------------------------------------------------------------------------
 # 5. Filtrar solo menores de 5 y mayores de 65
 # ------------------------------------------------------------------------------
-vars_extremos <- c("edad_menor_5", "edad_65_mas")
+vars_extremos <- c("edad_menor_5", "edad_5_14", "edad_65_mas")
 
 serie_extremos <- serie %>%
   select(semana_epi, all_of(vars_extremos)) %>%
@@ -153,7 +153,7 @@ for (a in anios) {
     ) +
     scale_shape_manual(values = c("Peak" = 16, "Mayor pendiente +" = 17, "Mayor pendiente -" = 15)) +
     labs(
-      title = paste("Serie semanal -", a, "- Menores de 5 y Mayores de 65"),
+      title = paste("Serie semanal -", a, "- Menores de 5, 5 a 14 y Mayores de 65 años"),
       x = "Semana epidemiológica",
       y = "Casos",
       color = "Grupo",
