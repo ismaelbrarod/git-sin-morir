@@ -24,5 +24,5 @@ gitcreds_set()
 
 use_git()
 
-# REPOSITORIO REMOTO ----
+# REPOSITORIO REMOTO (GITHUB) ----
 
